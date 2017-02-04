@@ -8,14 +8,26 @@ import java.awt.image.BufferedImage;
 public class CrystalView extends JPanel {
 
     private BufferedImage image;
+    private int size;
 
     public CrystalView(int size) {
+        this.size = size;
+        this.setPreferredSize(new Dimension(size, size));
         this.setBackground(Color.BLACK);
+        this.setVisible(true);
 
         this.image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
     }
 
     private int lastX, lastY = -1;
+
+    public void resetImage() {
+        lastX = -1;
+        lastY = -1;
+
+        image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
+        repaint();
+    }
 
     public void updateImage(int x, int y) {
         image.setRGB(x, y, Color.GREEN.getRGB());

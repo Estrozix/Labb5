@@ -149,6 +149,11 @@ public class CrystalModel {
     public void reset() {
         modelRep = new boolean[size][size];
         modelRep[yBathToModelRep(0)][xBathToModelRep(0)] = true;
+
+        currentRadius = 5;
+
+        x = 0;
+        y = 0;
     }
 
     /**
