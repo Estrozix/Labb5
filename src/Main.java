@@ -1,45 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by estrozix on 1/30/17.
- */
 public class Main extends JFrame {
 
-    private CrystalView crystalView;
-    private CrystalModel crystalModel;
+    private CrystalControl crystalControl;
 
     private int size = 600;
 
     public Main() {
-        setTitle("Crystal");
-        setSize(new Dimension(size, size));
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        crystalModel = new CrystalModel(size);
+        this.setTitle("Crystal");
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new BorderLayout());
 
-        crystalView = new CrystalView(size);
-        crystalView.setSize(new Dimension(size, size));
+        crystalControl = new CrystalControl(size);
 
-        add(crystalView);
+        this.add(crystalControl);
 
-        addListeners();
-        run();
-    }
-
-    private void addListeners() {
-        crystalModel.setUpdateListener(() -> {
-            int escRad = crystalModel.getEscapeCircleRadius();
-
-            crystalView.updateImage(crystalModel.getX() + escRad, crystalModel.getY() + escRad);
-        });
-    }
-
-    private void run() {
-        while(crystalModel.crystallizeOneIon());
+        pack();
     }
 
     public static void main(String[] args) {
-        new Main();
+        SwingUtilities.invokeLater(Main::new);
     }
 }
