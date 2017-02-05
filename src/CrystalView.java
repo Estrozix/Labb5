@@ -94,24 +94,10 @@ public class CrystalView extends JPanel {
     }
 
     private void directionalZoom(double scaleChange, MouseWheelEvent e) {
-        try {
-            AffineTransform afInverse = af.createInverse();
-            Point2D.Float mouseCoordinate = new Point2D.Float(e.getX(), e.getY());
-            afInverse.transform(mouseCoordinate, mouseCoordinate);
-            zoom(scaleChange);
-            af.transform(mouseCoordinate,mouseCoordinate);
-            double xOffset = mouseCoordinate.x-e.getX();
-            double yOffset = mouseCoordinate.y-e.getY();
-            Point2D.Double offset = new Point2D.Double(xOffset,yOffset);
-            afInverse.deltaTransform(offset,offset);
-            af.translate(-offset.x,-offset.y);
-        } catch (NoninvertibleTransformException e1) {
-            e1.printStackTrace();
-        }
-    }
-
-    private void directionalZoom2(double scaleChange, MouseWheelEvent e) {
-        System.out.println(af.getTranslateX());
+        zoom(scaleChange);
+        double offsetX = (scaleChange-1)*(e.getX()-af.getTranslateX());
+        double offsetY = (scaleChange-1)*(e.getY()-af.getTranslateY());
+        af.translate(-offsetX/af.getScaleX(),-offsetY/af.getScaleY());
     }
 
     private int lastX, lastY = -1;
@@ -121,6 +107,7 @@ public class CrystalView extends JPanel {
         lastY = -1;
 
         image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
+        af =  new AffineTransform();
         repaint();
     }
 
