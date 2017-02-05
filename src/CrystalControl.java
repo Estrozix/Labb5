@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 import java.awt.*;
 
 public class CrystalControl extends JPanel implements Runnable {
@@ -12,7 +13,7 @@ public class CrystalControl extends JPanel implements Runnable {
     private Thread thread = null;
     private boolean threadOn = false;
     private boolean simulate = false;
-    private long sleepTime = 200;
+    private long sleepTime = 0;
 
     public CrystalControl(int size) {
         this.setSize(new Dimension(size, size));
@@ -23,12 +24,11 @@ public class CrystalControl extends JPanel implements Runnable {
 
         this.setLayout(new BorderLayout());
 
-        add(crystalView, BorderLayout.NORTH);
+        add(crystalView, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
         addListeners();
         addButtons();
-
         thread = new Thread(this);
         thread.start();
 
@@ -75,23 +75,25 @@ public class CrystalControl extends JPanel implements Runnable {
     private void addButtons() {
         buttons = new JButton[3];
         buttons[0] = new JButton("Start/Pause");
-        buttons[1] = new JButton("Change Speed");
         buttons[2] = new JButton("Reset");
 
         buttons[0].addActionListener(actionEvent -> toggleSimulation());
 
+        /*
         buttons[1].addActionListener(actionEvent -> {
             String response = JOptionPane.showInputDialog("Set sleep time between iteration (milliseconds): ", null);
             setSleepTime(Long.parseLong(response));
         });
-
+        */
         buttons[2].addActionListener(actionEvent -> {
             crystalModel.reset();
             crystalView.resetImage();
         });
-
         this.buttonPanel.add(buttons[0]);
-        this.buttonPanel.add(buttons[1]);
         this.buttonPanel.add(buttons[2]);
+
+        JSlider speedPicker = new JSlider(0,30,0);
+        speedPicker.addChangeListener((ChangeEvent e) -> setSleepTime((long)Math.pow(10,((double)((JSlider)(e.getSource())).getValue())/10)-1)); //Kan vara lite overkill med exponentialfunktionen, om så önskas kan detta bytas mot endast getvalue
+        buttonPanel.add(speedPicker);
     }
 }
