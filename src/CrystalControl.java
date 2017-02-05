@@ -24,12 +24,11 @@ public class CrystalControl extends JPanel implements Runnable {
 
         this.setLayout(new BorderLayout());
 
-        add(crystalView, BorderLayout.NORTH);
+        add(crystalView, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
         addListeners();
         addButtons();
-
         thread = new Thread(this);
         thread.start();
 
@@ -90,10 +89,11 @@ public class CrystalControl extends JPanel implements Runnable {
             crystalModel.reset();
             crystalView.resetImage();
         });
-        JSlider speedPicker = new JSlider(0,30,0);
-        speedPicker.addChangeListener((ChangeEvent e) -> setSleepTime((long)Math.pow(10,((double)((JSlider)(e.getSource())).getValue())/10)-1)); //Kan vara lite overkill med exponentialfunktionen, om så önskas kan detta bytas mot endast getvalue
         this.buttonPanel.add(buttons[0]);
         this.buttonPanel.add(buttons[2]);
+
+        JSlider speedPicker = new JSlider(0,30,0);
+        speedPicker.addChangeListener((ChangeEvent e) -> setSleepTime((long)Math.pow(10,((double)((JSlider)(e.getSource())).getValue())/10)-1)); //Kan vara lite overkill med exponentialfunktionen, om så önskas kan detta bytas mot endast getvalue
         buttonPanel.add(speedPicker);
     }
 }
