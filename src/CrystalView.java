@@ -74,6 +74,7 @@ public class CrystalView extends JPanel {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
                 double scaleChange = Math.pow(mouseScrollSpeed, -e.getWheelRotation());
+                directionalZoom(scaleChange,e);
                 mousePosX = e.getX();
                 mousePosY = e.getY();
                 validate();
