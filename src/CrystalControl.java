@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CrystalControl extends JPanel implements Runnable {
 
@@ -13,8 +11,8 @@ public class CrystalControl extends JPanel implements Runnable {
 
     private Thread thread = null;
     private boolean threadOn = false;
-
     private boolean simulate = false;
+    private long sleepTime = 200;
 
     public CrystalControl(int size) {
         this.setSize(new Dimension(size, size));
@@ -40,7 +38,12 @@ public class CrystalControl extends JPanel implements Runnable {
     public void run() {
         while(threadOn) {
             if (shouldSimulate()) {
-                threadOn = crystalModel.crystallizeOneIon();
+                crystalModel.crystallizeOneIon();
+                try {
+                    Thread.sleep(getSleepTime());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -61,14 +64,25 @@ public class CrystalControl extends JPanel implements Runnable {
         return this.simulate;
     }
 
+    private synchronized long getSleepTime() {
+        return this.sleepTime;
+    }
+
+    private synchronized void setSleepTime(long sleepTime) {
+        this.sleepTime = sleepTime;
+    }
+
     private void addButtons() {
         buttons = new JButton[3];
-        buttons[0] = new JButton("Start");
+        buttons[0] = new JButton("Start/Pause");
         buttons[1] = new JButton("Change Speed");
         buttons[2] = new JButton("Reset");
 
-        buttons[0].addActionListener(actionEvent -> {
-            toggleSimulation();
+        buttons[0].addActionListener(actionEvent -> toggleSimulation());
+
+        buttons[1].addActionListener(actionEvent -> {
+            String response = JOptionPane.showInputDialog("Set sleep time between iteration (milliseconds): ", null);
+            setSleepTime(Long.parseLong(response));
         });
 
         buttons[2].addActionListener(actionEvent -> {
