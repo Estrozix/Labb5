@@ -40,6 +40,9 @@ public class CrystalView extends JPanel {
 
             @Override
             public void mouseDragged(MouseEvent e) {
+                Cursor cursor = new Cursor(Cursor.MOVE_CURSOR);
+                setCursor(cursor);
+
                 if (mousePosX == -1 || mousePosY == -1) {
                     mousePosX = e.getX();
                     mousePosY = e.getY();
@@ -74,6 +77,7 @@ public class CrystalView extends JPanel {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
                 double scaleChange = Math.pow(mouseScrollSpeed, -e.getWheelRotation());
+                zoom(scaleChange);
                 directionalZoom(scaleChange,e);
                 mousePosX = e.getX();
                 mousePosY = e.getY();
@@ -81,6 +85,11 @@ public class CrystalView extends JPanel {
                 repaint();
             }
 
+            @Override
+            public void mouseReleased(MouseEvent e){
+                Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+                setCursor(cursor);
+            }
 
         };
 
@@ -94,7 +103,6 @@ public class CrystalView extends JPanel {
     }
 
     private void directionalZoom(double scaleChange, MouseWheelEvent e) {
-        zoom(scaleChange);
         double offsetX = (scaleChange-1)*(e.getX()-af.getTranslateX());
         double offsetY = (scaleChange-1)*(e.getY()-af.getTranslateY());
         af.translate(-offsetX/af.getScaleX(),-offsetY/af.getScaleY());
@@ -130,7 +138,5 @@ public class CrystalView extends JPanel {
 
         g2d.transform(af);
         g2d.drawImage(image, 0, 0, null);
-
-        //g.drawImage(image, 0, 0, null);
     }
 }
