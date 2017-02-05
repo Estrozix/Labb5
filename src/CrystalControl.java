@@ -12,7 +12,7 @@ public class CrystalControl extends JPanel implements Runnable {
     private Thread thread = null;
     private boolean threadOn = false;
     private boolean simulate = false;
-    private long sleepTime = 200;
+    private long sleepTime = 0;
 
     public CrystalControl(int size) {
         this.setSize(new Dimension(size, size));
