@@ -165,13 +165,15 @@ public class CrystalModel {
      * Initierar modellen (dvs matrisen) och lägger en första kristalliserad jon mitt i "badet".
      */
     public void reset() {
+        x = 0;
+        y = 0;
+
         modelRep = new boolean[size][size];
         modelRep[yBathToModelRep(0)][xBathToModelRep(0)] = true;
 
-        currentRadius = 5;
+        if(modelUpdateListener != null) modelUpdateListener.update();
 
-        x = 0;
-        y = 0;
+        currentRadius = 5;
     }
 
     /**

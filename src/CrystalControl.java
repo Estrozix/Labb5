@@ -75,7 +75,7 @@ public class CrystalControl extends JPanel implements Runnable {
         crystalModel.setUpdateListener(() -> {
             int escRad = crystalModel.getEscapeCircleRadius();
 
-            crystalView.updateImage(crystalModel.getX() + escRad, crystalModel.getY() + escRad);
+            crystalView.updateImage(crystalModel.getX() + escRad + 4, escRad - crystalModel.getY() + 4);
         });
     }
 
