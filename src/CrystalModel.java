@@ -26,6 +26,7 @@ public class CrystalModel {
     private int y = 0;  // yBath
 
     private int size;
+
     /**
      * Skapar en modell av kristallbadet (elektrolytbadet).
      * @param size Kristallbadets bredd
@@ -38,18 +39,34 @@ public class CrystalModel {
         reset();
     }
 
-    // getters
+    /**
+     * Getter for the x-coordinate (in bath-coordinates).
+     * @return An int value representing the x-coordinate.
+     */
     public int getX() {
         return x;
     }
+
+    /**
+     * Getter for the y-coordinate (in bath-coordinates).
+     * @return An int value representing the y-coordinate.
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Getter for the escape circle radius.
+     * @return An int value representing the escape circle radius.
+     */
     public int getEscapeCircleRadius() {
         return this.escapeCircleRadius;
     }
 
+    /**
+     * Sets the modelUpdateListener for this specific object
+     * @param modelUpdateListener A ModelUpdateListener
+     */
     public void setUpdateListener(ModelUpdateListener modelUpdateListener) {
         this.modelUpdateListener = modelUpdateListener;
     }
@@ -125,11 +142,13 @@ public class CrystalModel {
 
             //System.out.println("Current Position: " + x + " " + y);
         }
-        System.out.println("NEVER BE");
         return false;
     }
 
-    /** ...
+    /**
+     * A function running the method crystallizeOneIon() "steps" times.
+     * @param steps Int value of how many times you want to run the function.
+     * @return Returns true when all steps have been made.
      */
     public boolean runSomeSteps(int steps) {
         int i= 0;
@@ -232,6 +251,13 @@ public class CrystalModel {
     private int xBathToModelRep(int x) {
         return x + escapeCircleRadius + 4;
     }
+
+    /**
+     * Omvandlar en "bad"-kordinat till ett matris värde.
+     * All access till matrisen måste transformeras i.e. 0,0 -> size/2, size/2
+     * @param y "bad"-koordinat som ska omvandlas
+     * @return motsvarande y-koordinat iför matrisen
+     */
     private int yBathToModelRep(int y) {
         return escapeCircleRadius -y + 4;
     }
