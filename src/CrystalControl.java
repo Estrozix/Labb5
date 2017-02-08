@@ -76,10 +76,21 @@ public class CrystalControl extends JPanel implements Runnable {
      * and makes the communication between the objects more clear.
      */
     private void addListeners() {
-        crystalModel.setUpdateListener(() -> {
-            int escRad = crystalModel.getEscapeCircleRadius();
+        crystalModel.setUpdateListener(new ModelUpdateListener() {
+            @Override
+            public void update() {
+                int escRad = crystalModel.getEscapeCircleRadius();
 
-            crystalView.updateImage(crystalModel.getX() + escRad + 4, crystalModel.getY() + escRad + 4);
+                crystalView.updateImage(crystalModel.getX() + escRad + 4, crystalModel.getY() + escRad + 4);
+            }
+
+            @Override
+            public void reset() {
+                int escRad = crystalModel.getEscapeCircleRadius();
+
+                crystalView.resetImage();
+                crystalView.updateImage(escRad + 4, escRad + 4);
+            }
         });
     }
 
@@ -135,7 +146,6 @@ public class CrystalControl extends JPanel implements Runnable {
         });
         */
         buttons[2].addActionListener(actionEvent -> {
-            crystalView.resetImage();
             crystalModel.reset();
         });
         this.buttonPanel.add(buttons[0]);

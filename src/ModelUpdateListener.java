@@ -3,4 +3,5 @@
  */
 public interface ModelUpdateListener {
     void update();
+    void reset();
 }

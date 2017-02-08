@@ -139,7 +139,12 @@ public class CrystalView extends JPanel {
         lastX = -1;
         lastY = -1;
 
-        image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
+        for (int y = 0; y < size; y++) {
+            for(int x = 0; x < size; x++) {
+                image.setRGB(x, y, Color.BLACK.getRGB());
+            }
+        }
+
         //af =  new AffineTransform();
         repaint();
     }
