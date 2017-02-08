@@ -2,6 +2,12 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 
+/**
+ * A controller that connects a CrystalModel and CrystalView. Note that it runs the crystallizing and
+ * drawing on a separate thread to avoid interruptions from user input. It also includes control
+ * for the user input.
+ */
+
 public class CrystalControl extends JPanel implements Runnable {
 
     private CrystalModel crystalModel;
@@ -15,6 +21,13 @@ public class CrystalControl extends JPanel implements Runnable {
     private boolean simulate = false;
     private long sleepTime = 0;
 
+    /**
+     * Constructor which takes only one value, the size of the JPanel.
+     * It will create all the related objects and set the layout and size.
+     * Furthermore it will also create the separate thread which will run the
+     * crystallization.
+     * @param size The size of the JPanel.
+     */
     public CrystalControl(int size) {
         this.setSize(new Dimension(size, size));
 
@@ -35,6 +48,11 @@ public class CrystalControl extends JPanel implements Runnable {
         threadOn = true;
     }
 
+    /**
+     * Running the separate thread for the crystallization with a short sleep between each
+     * iteration according to the set sleep-time (note, this is set by the user using
+     * the slider in the UI)
+     */
     public void run() {
         while(threadOn) {
             if (shouldSimulate()) {
@@ -48,30 +66,57 @@ public class CrystalControl extends JPanel implements Runnable {
         }
     }
 
+    /**
+     * Adding the customized listeners for the crystalModel. This is set so that the CrystalModel can notify
+     * the Controller without a direct reference to the controller. This helps reduce clustering in the code
+     * and makes the communication between the objects more clear.
+     */
     private void addListeners() {
         crystalModel.setUpdateListener(() -> {
             int escRad = crystalModel.getEscapeCircleRadius();
 
-            crystalView.updateImage(crystalModel.getX() + escRad, crystalModel.getY() + escRad);
+            crystalView.updateImage(crystalModel.getX() + escRad + 4, escRad - crystalModel.getY() + 4);
         });
     }
 
+    /**
+     * Toggles the simulation on or off. Note, this method is set to synchronized for good practice since multiple
+     * threads are implemented, however this might be unnecessary since only one of the threads in the program
+     * calls this method in its current state.
+     */
     private synchronized void toggleSimulation() {
         simulate = !simulate;
     }
 
+    /**
+     * Getter for the simulate boolean. This is to check whether the other thread should simulate or not.
+     * This is added to prevent the crystallizing-thread from locking the simulate-variable.
+     * @return A boolean value for the variable simulate.
+     */
     private synchronized boolean shouldSimulate() {
         return this.simulate;
     }
 
+    /**
+     * Returns the amount of milliseconds to sleep between each iteration. This is set to synchronized
+     * for the same reason as toggleSimulation().
+     * @return A long value of the sleepTime (milliseconds).
+     */
     private synchronized long getSleepTime() {
         return this.sleepTime;
     }
 
+    /**
+     * Sets the sleepTime in milliseconds.
+     * @param sleepTime The sleeptime in milliseconds.
+     */
     private synchronized void setSleepTime(long sleepTime) {
         this.sleepTime = sleepTime;
     }
 
+    /**
+     * Creates and adds the buttons and sliders to the user interface, also adds the corresponding listeners.
+     */
     private void addButtons() {
         buttons = new JButton[3];
         buttons[0] = new JButton("Start/Pause");

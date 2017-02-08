@@ -1,12 +1,20 @@
+import com.sun.org.apache.xpath.internal.functions.WrongNumberArgsException;
+
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The main class for the program. It basically starts the main thread for Swing and creates the window.
+ */
 public class Main extends JFrame {
 
     private CrystalControl crystalControl;
 
-    private int size = 600;
+    public static int size = 600;
 
+    /**
+     * Creates the JFrame and sets some properties, also creates the crystalControl object.
+     */
     public Main() {
         this.setTitle("Crystal");
         this.setVisible(true);
@@ -20,7 +28,37 @@ public class Main extends JFrame {
         pack();
     }
 
+    private static void setSize(int size) {
+        if(size < 0) {
+            throw new IllegalArgumentException("Size cannot be negative!");
+        }
+        Main.size = size;
+    }
+
     public static void main(String[] args) {
+        boolean ready = false;
+        boolean setNew = false;
+
+        String message = "";
+
+        while(!ready) {
+            try {
+                if(setNew) {
+                    setNew = false;
+                    setSize(Integer.parseInt(JOptionPane.showInputDialog(message)));
+                } else {
+                    setSize(Integer.parseInt(args[0]));
+                }
+
+                ready = true;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                setNew = true;
+                message = "No argument for size found! Please enter the size of the crystal:";
+            } catch (IllegalArgumentException e) {
+                setNew = true;
+                message = "Incorrect value for the size! Please enter the size of the crystal:";
+            }
+        }
         SwingUtilities.invokeLater(Main::new);
     }
 }
