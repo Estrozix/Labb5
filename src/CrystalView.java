@@ -11,6 +11,11 @@ import java.awt.image.BufferedImage;
 /**
  * Created by estrozix on 1/31/17.
  */
+
+/**
+ * A JPanel which contains a BufferedImage that will be drawn during a paintComponent call.
+ * The image can be translated and zoomed in to with mouse control, the data from which is stored in a corresponding AffineTransform object.
+ */
 public class CrystalView extends JPanel {
 
     private BufferedImage image;
@@ -22,6 +27,10 @@ public class CrystalView extends JPanel {
     int mousePosY = -1;
     double mouseScrollSpeed = 1.1;
 
+    /**
+     * Creates the CrystalView and its BufferedImage and AffineTransform objects.
+     * @param size, size of the internal BufferedImage that will be drawn during paintComponent.
+     */
     public CrystalView(int size) {
         this.size = size;
         this.setPreferredSize(new Dimension(size, size));
@@ -98,10 +107,23 @@ public class CrystalView extends JPanel {
         addMouseWheelListener(mouse);
     }
 
+    /**
+     * Scales the BufferedImage with a specified amount, effectively zooming.
+     * <p>
+     * Note: this is applied to a separate AffineTransform object, the effect survives a {@link CrystalView#resetImage()} and does not effect the data in the image whatsoever (no information will be lost).
+     * @param scaleChange
+     */
     private void zoom(double scaleChange) {
         af.scale(scaleChange, scaleChange);
     }
 
+    /**
+     * Translates the image during a {@link CrystalView#zoom(double)} such the the mouse position will stay on the same part of the image
+     * <p>
+     * Note: this is applied to a separate AffineTransform object, the effect survives a {@link CrystalView#resetImage()} and does not effect the data in the image whatsoever (no information will be lost).
+     * @param scaleChange
+     * @param e
+     */
     private void directionalZoom(double scaleChange, MouseWheelEvent e) {
         double offsetX = (scaleChange-1)*(e.getX()-af.getTranslateX());
         double offsetY = (scaleChange-1)*(e.getY()-af.getTranslateY());
@@ -110,6 +132,9 @@ public class CrystalView extends JPanel {
 
     private int lastX, lastY = -1;
 
+    /**
+     * Clears the BufferedImage of all content, resetting the image.
+     */
     public void resetImage() {
         lastX = -1;
         lastY = -1;
@@ -119,6 +144,13 @@ public class CrystalView extends JPanel {
         repaint();
     }
 
+    /**
+     * Paints a pixel on the BufferedImage green, and sets the previously painted dot to red.
+     * <p>
+     * Note: Has no effect on any other pixels.
+     * @param x , x-coordinate of the dot
+     * @param y , y-coordinate of the dot
+     */
     public void updateImage(int x, int y) {
         image.setRGB(y, x, Color.GREEN.getRGB());
 
