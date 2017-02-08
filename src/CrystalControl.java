@@ -31,8 +31,8 @@ public class CrystalControl extends JPanel implements Runnable {
     public CrystalControl(int size) {
         this.setSize(new Dimension(size, size));
 
-        crystalModel = new CrystalModel(size);
         crystalView = new CrystalView(size);
+        crystalModel = new CrystalModel(size);
         buttonPanel = new JPanel();
 
         this.setLayout(new BorderLayout());
@@ -46,6 +46,10 @@ public class CrystalControl extends JPanel implements Runnable {
         thread.start();
 
         threadOn = true;
+
+        int escRad = crystalModel.getEscapeCircleRadius();
+
+        crystalView.updateImage(crystalModel.getX() + escRad + 4, crystalModel.getY() + escRad + 4);
     }
 
     /**
@@ -75,7 +79,7 @@ public class CrystalControl extends JPanel implements Runnable {
         crystalModel.setUpdateListener(() -> {
             int escRad = crystalModel.getEscapeCircleRadius();
 
-            crystalView.updateImage(crystalModel.getX() + escRad + 4, escRad - crystalModel.getY() + 4);
+            crystalView.updateImage(crystalModel.getX() + escRad + 4, crystalModel.getY() + escRad + 4);
         });
     }
 
@@ -131,8 +135,8 @@ public class CrystalControl extends JPanel implements Runnable {
         });
         */
         buttons[2].addActionListener(actionEvent -> {
-            crystalModel.reset();
             crystalView.resetImage();
+            crystalModel.reset();
         });
         this.buttonPanel.add(buttons[0]);
         this.buttonPanel.add(buttons[2]);

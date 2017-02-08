@@ -115,15 +115,15 @@ public class CrystalView extends JPanel {
         lastY = -1;
 
         image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
-        af =  new AffineTransform();
+        //af =  new AffineTransform();
         repaint();
     }
 
     public void updateImage(int x, int y) {
-        image.setRGB(x, y, Color.GREEN.getRGB());
+        image.setRGB(y, x, Color.GREEN.getRGB());
 
         if (lastX != -1 && lastY != -1)
-            image.setRGB(lastX, lastY, Color.RED.getRGB());
+            image.setRGB(lastY, lastX, Color.RED.getRGB());
 
         lastX = x;
         lastY = y;
