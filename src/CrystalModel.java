@@ -171,6 +171,8 @@ public class CrystalModel {
         modelRep = new boolean[size][size];
         modelRep[yBathToModelRep(0)][xBathToModelRep(0)] = true;
 
+        if(modelUpdateListener != null) modelUpdateListener.update();
+
         currentRadius = 5;
     }
 

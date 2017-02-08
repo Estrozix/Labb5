@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d63aa631-8391-47be-9673-2b70bc914562" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Labb4/CrystalModel.class" afterPath="$PROJECT_DIR$/out/production/Labb4/CrystalModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Labb4/CrystalView.class" afterPath="$PROJECT_DIR$/out/production/Labb4/CrystalView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrystalControl.java" afterPath="$PROJECT_DIR$/src/CrystalControl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrystalModel.java" afterPath="$PROJECT_DIR$/src/CrystalModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrystalView.java" afterPath="$PROJECT_DIR$/src/CrystalView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,17 +29,17 @@
           <file leaf-file-name="CrystalModel.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/CrystalModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="173" column="26" lean-forward="true" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
+                <state relative-caret-position="90">
+                  <caret line="170" column="22" lean-forward="true" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="22" />
                   <folding>
                     <element signature="e#1299#1300#0" expanded="true" />
                     <element signature="e#1323#1324#0" expanded="true" />
                     <element signature="e#2260#2261#0" expanded="true" />
                     <element signature="e#2331#2332#0" expanded="true" />
-                    <element signature="e#7350#7351#0" expanded="true" />
-                    <element signature="e#7399#7400#0" expanded="true" />
-                    <element signature="e#7697#7698#0" expanded="true" />
-                    <element signature="e#7745#7746#0" expanded="true" />
+                    <element signature="e#7421#7422#0" expanded="true" />
+                    <element signature="e#7470#7471#0" expanded="true" />
+                    <element signature="e#7768#7769#0" expanded="true" />
+                    <element signature="e#7816#7817#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -107,8 +107,8 @@
           <file leaf-file-name="CrystalControl.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/CrystalControl.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="354">
-                  <caret line="63" column="2" lean-forward="false" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
+                <state relative-caret-position="69">
+                  <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <marker date="1486578759033" expanded="true" signature="7:33" ph="..." />
@@ -150,8 +150,8 @@
         <option value="$PROJECT_DIR$/src/ModelUpdateListener.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/CrystalView.java" />
-        <option value="$PROJECT_DIR$/src/CrystalModel.java" />
         <option value="$PROJECT_DIR$/src/CrystalControl.java" />
+        <option value="$PROJECT_DIR$/src/CrystalModel.java" />
       </list>
     </option>
   </component>
@@ -404,7 +404,8 @@
     <MESSAGE value="Adding javadoc to ModelUpdateListener and Main, and error-handling in Main." />
     <MESSAGE value="&quot;Probably&quot; fixing communication error in controller" />
     <MESSAGE value="Pushing up everything" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushing up everything" />
+    <MESSAGE value="Fixing rendering problem where one crystal was invisible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing rendering problem where one crystal was invisible" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -455,10 +456,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -509,10 +510,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -552,10 +553,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -595,10 +596,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -638,10 +639,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -673,10 +674,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -708,10 +709,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -743,10 +744,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -778,10 +779,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -805,10 +806,10 @@
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -923,30 +924,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CrystalControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="81" column="51" lean-forward="false" selection-start-line="81" selection-start-column="51" selection-end-line="81" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1486578759033" expanded="true" signature="7:33" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CrystalModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="173" column="26" lean-forward="true" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
+        <state relative-caret-position="90">
+          <caret line="170" column="22" lean-forward="true" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="22" />
           <folding>
             <element signature="e#1299#1300#0" expanded="true" />
             <element signature="e#1323#1324#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#7350#7351#0" expanded="true" />
-            <element signature="e#7399#7400#0" expanded="true" />
-            <element signature="e#7697#7698#0" expanded="true" />
-            <element signature="e#7745#7746#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CrystalControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="63" column="2" lean-forward="false" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1486578759033" expanded="true" signature="7:33" ph="..." />
+            <element signature="e#7421#7422#0" expanded="true" />
+            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#7768#7769#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
           </folding>
         </state>
       </provider>
