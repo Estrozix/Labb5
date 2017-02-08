@@ -4,7 +4,6 @@ import java.util.Random;
  * CrystalModel är en klass som representerar ett elektrolytbad som omges med en
  * cirkulär anod av zink, och i vars mitt en kolkatod är placerad. Därefter läggs
  * en svag spänning över systemet.
- *
  */
 
 public class CrystalModel {

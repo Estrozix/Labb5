@@ -1,5 +1,5 @@
 /**
- * Created by estrozix on 2/2/17.
+ * An interface including only one method called update.
  */
 public interface ModelUpdateListener {
     void update();
