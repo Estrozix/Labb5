@@ -20,6 +20,7 @@ public class CrystalControl extends JPanel implements Runnable {
     private boolean threadOn = false;
     private boolean simulate = false;
     private long sleepTime = 0;
+    private boolean done = false;
 
     /**
      * Constructor which takes only one value, the size of the JPanel.
@@ -59,8 +60,8 @@ public class CrystalControl extends JPanel implements Runnable {
      */
     public void run() {
         while(threadOn) {
-            if (shouldSimulate()) {
-                crystalModel.crystallizeOneIon();
+            if (shouldSimulate() && !done) {
+                if (!crystalModel.crystallizeOneIon()) done = true;
                 try {
                     Thread.sleep(getSleepTime());
                 } catch (InterruptedException e) {
@@ -86,8 +87,8 @@ public class CrystalControl extends JPanel implements Runnable {
 
             @Override
             public void reset() {
+                done = false;
                 int escRad = crystalModel.getEscapeCircleRadius();
-
                 crystalView.resetImage();
                 crystalView.updateImage(escRad + 4, escRad + 4);
             }

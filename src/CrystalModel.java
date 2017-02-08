@@ -35,6 +35,8 @@ public class CrystalModel {
         this.size = size;
         escapeCircleRadius = size / 2 - 4; //(-4 to awoid indexOutOfBounds)
         startCircleRadius = escapeCircleRadius - (int)(0.1 * escapeCircleRadius);
+        System.out.println(startCircleRadius);
+        System.out.println(escapeCircleRadius);
         reset();
     }
 
@@ -77,7 +79,10 @@ public class CrystalModel {
      * @return "true" om det finns en kristalliserad jon på position x,y.
      */
     public boolean getModelValue(int x, int y) {
-        return modelRep[yBathToModelRep(y)][xBathToModelRep(x)];
+        if(y < size && x < size)
+            return modelRep[yBathToModelRep(y)][xBathToModelRep(x)];
+        else
+            return false;
     }
 
     /**
@@ -113,7 +118,9 @@ public class CrystalModel {
 
                 if (outsideCicle(startCircleRadius, x, y)) {
                     return false;
+
                 }
+
                 //System.out.println(this);
                 return true;
             }
@@ -187,8 +194,8 @@ public class CrystalModel {
      * @return "true" om positionen är utanför cirkeln
      */
     public static boolean outsideCicle(int r, int x, int y) {
-        double distance = Math.sqrt(x * x + y * y);
-        return distance >= r;
+        double distance = x * x + y * y;
+        return distance >= r * r;
     }
 
     /**
@@ -240,8 +247,8 @@ public class CrystalModel {
 
         int angle = random.nextInt(360);
 
-        x = (int) (currentRadius * Math.cos(Math.toRadians(angle)));
-        y = (int) (currentRadius * Math.sin(Math.toRadians(angle)));
+        x = (int) (currentRadius * Math.cos(Math.toRadians(angle)) + 0.5);
+        y = (int) (currentRadius * Math.sin(Math.toRadians(angle)) + 0.5);
         //System.out.println("Dropping new at " + x + " " + y);
     }
 
