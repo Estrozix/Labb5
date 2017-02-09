@@ -10,6 +10,8 @@ public class CrystalModel {
 
     private ModelUpdateListener modelUpdateListener;
 
+    private boolean extremeMode = false;
+
     // variabler
     private int escapeCircleRadius; // radius of escape circle
     private int startCircleRadius; // radius of start circle
@@ -70,6 +72,13 @@ public class CrystalModel {
      */
     public void setUpdateListener(ModelUpdateListener modelUpdateListener) {
         this.modelUpdateListener = modelUpdateListener;
+    }
+
+    /**
+     * Toggles extremeMode on and off.
+     */
+    public void toggleExtremeMode() {
+        extremeMode = !extremeMode;
     }
 
     /**
@@ -247,8 +256,15 @@ public class CrystalModel {
 
         int angle = random.nextInt(360);
 
-        x = (int) (currentRadius * Math.cos(Math.toRadians(angle)) + 0.5);
-        y = (int) (currentRadius * Math.sin(Math.toRadians(angle)) + 0.5);
+        int radius;
+
+        if (extremeMode)
+            radius = currentRadius;
+        else
+            radius = startCircleRadius;
+
+        x = (int) (radius * Math.cos(Math.toRadians(angle)) + 0.5);
+        y = (int) (radius * Math.sin(Math.toRadians(angle)) + 0.5);
         //System.out.println("Dropping new at " + x + " " + y);
     }
 

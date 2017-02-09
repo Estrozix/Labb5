@@ -15,6 +15,7 @@ public class CrystalControl extends JPanel implements Runnable {
 
     private JPanel buttonPanel;
     private JButton[] buttons;
+    private JCheckBox jCheckBox;
 
     private Thread thread = null;
     private boolean threadOn = false;
@@ -138,6 +139,11 @@ public class CrystalControl extends JPanel implements Runnable {
         buttons[0] = new JButton("Start/Pause");
         buttons[2] = new JButton("Reset");
 
+        jCheckBox = new JCheckBox();
+        jCheckBox.setToolTipText("Extreme Mode");
+
+        jCheckBox.addActionListener(actionEvent -> crystalModel.toggleExtremeMode());
+
         buttons[0].addActionListener(actionEvent -> toggleSimulation());
 
         /*
@@ -151,8 +157,10 @@ public class CrystalControl extends JPanel implements Runnable {
         });
         this.buttonPanel.add(buttons[0]);
         this.buttonPanel.add(buttons[2]);
+        this.buttonPanel.add(jCheckBox);
 
         JSlider speedPicker = new JSlider(0,30,0);
+        speedPicker.setToolTipText("Change Speed");
         speedPicker.addChangeListener((ChangeEvent e) -> setSleepTime((long)Math.pow(10,((double)((JSlider)(e.getSource())).getValue())/10)-1)); //Kan vara lite overkill med exponentialfunktionen, om så önskas kan detta bytas mot endast getvalue
         buttonPanel.add(speedPicker);
     }
