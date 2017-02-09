@@ -10,7 +10,7 @@ public class CrystalModel {
 
     private ModelUpdateListener modelUpdateListener;
 
-    private boolean extremeMode = false;
+    private boolean extremeMode = true;
 
     // variabler
     private int escapeCircleRadius; // radius of escape circle

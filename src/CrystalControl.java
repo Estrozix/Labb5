@@ -141,6 +141,7 @@ public class CrystalControl extends JPanel implements Runnable {
 
         jCheckBox = new JCheckBox();
         jCheckBox.setToolTipText("Extreme Mode");
+        jCheckBox.setSelected(true);
 
         jCheckBox.addActionListener(actionEvent -> crystalModel.toggleExtremeMode());
 
